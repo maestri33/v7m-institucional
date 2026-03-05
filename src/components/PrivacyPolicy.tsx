@@ -1,57 +1,56 @@
+﻿const LAST_UPDATED = '05/03/2026'
+
 export default function PrivacyPolicy() {
-    return (
-        <section className="container" style={{ padding: '8rem 0 4rem 0', color: 'var(--text-secondary)', minHeight: '80vh' }}>
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem', color: 'white' }}>Políticas de Privacidade</h1>
+  return (
+    <section className="container legal-page" aria-labelledby="privacy-title">
+      <h1 id="privacy-title">Politica de Privacidade</h1>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', lineHeight: 1.7 }}>
-                <p>
-                    A privacidade e a segurança dos seus dados são fundamentais para a <strong>V7M</strong>. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos suas informações pessoais ao interagir com o site <strong>v7m.org</strong> e nossas estruturas de operação.
-                </p>
+      <div className="legal-content">
+        <p>
+          Esta Politica de Privacidade descreve como coletamos, usamos, armazenamos e protegemos dados pessoais ao interagir com o site <strong>v7m.org</strong>.
+        </p>
 
-                <div>
-                    <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'white' }}>1. Coleta de Informações</h2>
-                    <p>
-                        Coletamos informações pessoais que você nos fornece de forma voluntária ao preencher formulários de contato em nosso site, tais como nome completo, endereço de e-mail profissional e o teor da sua mensagem.
-                    </p>
-                </div>
+        <div>
+          <h2>1. Coleta de dados</h2>
+          <p>
+            Podemos coletar nome, email e mensagem informados voluntariamente em formularios de contato.
+          </p>
+        </div>
 
-                <div>
-                    <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'white' }}>2. Uso das Informações</h2>
-                    <p>
-                        As informações coletadas são utilizadas exclusivamente para:
-                    </p>
-                    <ul style={{ listStyleType: 'disc', paddingLeft: '2rem', marginTop: '0.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <li>Responder a suas consultas de parceria, contato institucional ou suporte operacional;</li>
-                        <li>Melhorar a experiência do usuário em nossas plataformas;</li>
-                        <li>Cumprir obrigações legais e regulatórias atreladas às nossas operações.</li>
-                    </ul>
-                </div>
+        <div>
+          <h2>2. Uso dos dados</h2>
+          <ul>
+            <li>Responder solicitacoes institucionais e comerciais.</li>
+            <li>Melhorar experiencia de uso do site.</li>
+            <li>Cumprir obrigacoes legais e regulatorias.</li>
+          </ul>
+        </div>
 
-                <div>
-                    <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'white' }}>3. Compartilhamento de Dados</h2>
-                    <p>
-                        A V7M <strong>não vende, aluga ou compartilha</strong> suas informações pessoais com terceiros para fins de marketing. Seus dados podem ser referenciados internamente entre as áreas de Educação, Tecnologia e Engenharia estritamente para o andamento das operações ou para suportar Polos Educacionais.
-                    </p>
-                </div>
+        <div>
+          <h2>3. Compartilhamento</h2>
+          <p>
+            A V7M nao vende nem aluga dados pessoais. O compartilhamento ocorre apenas quando necessario para operacoes internas ou exigencias legais.
+          </p>
+        </div>
 
-                <div>
-                    <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'white' }}>4. Segurança dos Dados</h2>
-                    <p>
-                        Implementamos medidas técnicas e organizacionais adequadas em nossa infraestrutura cibernética e de nuvem para proteger seus dados pessoais contra acesso não autorizado, alteração, divulgação ou destruição.
-                    </p>
-                </div>
+        <div>
+          <h2>4. Seguranca</h2>
+          <p>
+            Adotamos medidas tecnicas e organizacionais para proteger dados contra acesso nao autorizado, alteracao, divulgacao ou destruicao indevida.
+          </p>
+        </div>
 
-                <div>
-                    <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'white' }}>5. Seus Direitos</h2>
-                    <p>
-                        Você tem o direito de solicitar acesso, correção ou exclusão de seus dados pessoais armazenados em nossas bases. Para exercer esses direitos, entre em contato conosco através dos canais disponibilizados em nosso site.
-                    </p>
-                </div>
+        <div>
+          <h2>5. Direitos do titular</h2>
+          <p>
+            Voce pode solicitar acesso, correcao ou exclusao de dados pessoais pelos canais de contato oficiais da V7M.
+          </p>
+        </div>
 
-                <p style={{ marginTop: '2rem', fontSize: '0.9rem' }}>
-                    <strong>Última atualização:</strong> {new Date().toLocaleDateString('pt-BR')}
-                </p>
-            </div>
-        </section>
-    );
+        <p className="legal-updated">
+          <strong>Ultima atualizacao:</strong> {LAST_UPDATED}
+        </p>
+      </div>
+    </section>
+  )
 }
