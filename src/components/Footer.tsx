@@ -1,4 +1,6 @@
-﻿export default function Footer() {
+﻿import { Link } from 'react-router-dom'
+
+export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
@@ -14,21 +16,21 @@
 
           <ul className="footer-links" aria-label="Navegação do rodapé">
             <li>
-              <a href="#sobre">Estrutura</a>
+              <a href="/#sobre">Estrutura</a>
             </li>
             <li>
-              <a href="#atuacao">Pilares</a>
+              <a href="/#atuacao">Pilares</a>
             </li>
             <li>
-              <a href="#contato">Contato</a>
+              <a href="/#contato">Contato</a>
             </li>
           </ul>
 
           <div className="footer-legal">
             <p>&copy; {year} v7m.org. Todos os direitos reservados.</p>
             <div className="footer-policy-links">
-              <a href="#termos">Termos de Uso</a>
-              <a href="#privacidade">Política de Privacidade</a>
+              <Link to="/termos">Termos de Uso</Link>
+              <Link to="/privacidade">Política de Privacidade</Link>
             </div>
           </div>
         </div>
