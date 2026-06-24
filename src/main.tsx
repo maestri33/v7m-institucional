@@ -1,14 +1,21 @@
 import { StrictMode } from 'react'
-import { hydrateRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-hydrateRoot(
-  document.getElementById('root')!,
+const container = document.getElementById('root')
+if (!container) {
+  throw new Error('Root container not found')
+}
+
+const rootElement = (
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
+    <App />
+  </StrictMode>
 )
+
+if (container.children.length > 0) {
+  hydrateRoot(container, rootElement)
+} else {
+  createRoot(container).render(rootElement)
+}
