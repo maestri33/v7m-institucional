@@ -1,102 +1,89 @@
-﻿import { useEffect } from 'react'
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
-import About from './components/About'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import PrivacyPolicy from './components/PrivacyPolicy'
-import Services from './components/Services'
+import ReactFullpageImport from '@fullpage/react-fullpage'
+import type { fullpageApi } from '@fullpage/react-fullpage'
+import { AuroraBackground } from './components/ui/AuroraBackground'
+import { Header } from './components/ui/Header'
+import HeroSection from './components/sections/HeroSection'
+import EducationSection from './components/sections/EducationSection'
+import AffiliatesSection from './components/sections/AffiliatesSection'
+import TechSection from './components/sections/TechSection'
+import EngineeringSection from './components/sections/EngineeringSection'
+import VideoMaskSection from './components/sections/VideoMaskSection'
+import ContactSection from './components/sections/ContactSection'
+import CareersFooterSection from './components/sections/CareersFooterSection'
 import TermsOfUse from './components/TermsOfUse'
+import PrivacyPolicy from './components/PrivacyPolicy'
 
-const HOME_SECTION_IDS = new Set(['sobre', 'atuacao', 'contato'])
+// @fullpage/react-fullpage is bundled as CommonJS with `module.exports = { default: Component }`.
+// Vite's client build resolves the default import to the class, but Node SSR imports the whole
+// module object. Normalize so the same code works in both environments.
+const ReactFullpage =
+  typeof ReactFullpageImport === 'function'
+    ? ReactFullpageImport
+    : (ReactFullpageImport as unknown as { default: typeof ReactFullpageImport }).default
 
-const getHeaderOffset = () => {
-  const header = document.querySelector('.site-header')
-  return header instanceof HTMLElement ? header.offsetHeight : 84
-}
+const FullpageWrapper =
+  (ReactFullpageImport as unknown as { Wrapper?: typeof ReactFullpageImport.Wrapper }).Wrapper ??
+  ReactFullpage.Wrapper
 
-function Home() {
+const ANCHORS = [
+  'home',
+  'educacao',
+  'afiliados',
+  'tech',
+  'engenharia',
+  'video',
+  'contato',
+  'carreiras',
+]
+
+function FullpageApp() {
   return (
-    <>
-      <Hero />
-      <About />
-      <Services />
-      <Contact />
-    </>
+    <ReactFullpage
+      // TODO: replace OPEN-SOURCE-GPLV3-LICENSE with a commercial fullpage.js license key before production.
+      licenseKey="OPEN-SOURCE-GPLV3-LICENSE"
+      anchors={ANCHORS}
+      navigation
+      navigationPosition="right"
+      scrollingSpeed={700}
+      scrollOverflow
+      credits={{ enabled: false }}
+      render={({ fullpageApi }: { fullpageApi: fullpageApi }) => {
+        return (
+          <FullpageWrapper>
+            <Header fullpageApi={fullpageApi} />
+            <HeroSection />
+            <EducationSection />
+            <AffiliatesSection />
+            <TechSection />
+            <EngineeringSection />
+            <VideoMaskSection />
+            <ContactSection />
+            <CareersFooterSection />
+          </FullpageWrapper>
+        )
+      }}
+    />
   )
 }
 
-function ScrollManager() {
-  const location = useLocation()
+export default function App() {
+  const hash =
+    typeof window !== 'undefined'
+      ? window.location.hash.replace(/^#/, '').trim().toLowerCase()
+      : ''
 
-  useEffect(() => {
-    const hash = location.hash.replace(/^#/, '').trim()
+  if (hash === 'termos') {
+    return <TermsOfUse />
+  }
 
-    if (!hash) {
-      window.scrollTo({ top: 0, behavior: 'auto' })
-      return
-    }
-
-    if (!HOME_SECTION_IDS.has(hash)) {
-      return
-    }
-
-    const target = document.getElementById(hash)
-    if (!target) {
-      return
-    }
-
-    const navOffset = getHeaderOffset()
-    const top = target.getBoundingClientRect().top + window.scrollY - navOffset
-    window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' })
-  }, [location])
-
-  return null
-}
-
-function App() {
-  const location = useLocation()
-  const isHome = location.pathname === '/'
+  if (hash === 'privacidade') {
+    return <PrivacyPolicy />
+  }
 
   return (
     <>
-      <ScrollManager />
-
-      <a href="#conteudo-principal" className="skip-link">
-        Pular para conteúdo principal
-      </a>
-
-      <nav className="site-header" aria-label="Navegação principal">
-        <div className="container site-header-content">
-          <Link to="/" className="logo-link" aria-label="Voltar para a página inicial">
-            <img src="/logo.svg" alt="" className="logo-image" aria-hidden="true" />
-            <span className="logo-wordmark">
-              v7m<span className="logo-highlight">.org</span>
-            </span>
-          </Link>
-          {isHome ? (
-            <a href="#contato" className="nav-action">
-              Fale Conosco
-            </a>
-          ) : (
-            <Link to="/" className="nav-action">
-              Voltar ao Início
-            </Link>
-          )}
-        </div>
-      </nav>
-
-      <main id="conteudo-principal" className="main-layout">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/termos" element={<TermsOfUse />} />
-          <Route path="/privacidade" element={<PrivacyPolicy />} />
-        </Routes>
-      </main>
-
-      <Footer />
+      <AuroraBackground />
+      <FullpageApp />
     </>
   )
 }
-
-export default App

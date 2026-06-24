@@ -12,7 +12,7 @@ const { render, routes } = await import(
 const template = fs.readFileSync(path.resolve(root, 'dist/index.html'), 'utf-8')
 
 for (const route of routes) {
-  const appHtml = render(route.path)
+  const appHtml = render()
 
   let html = template
     .replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`)
