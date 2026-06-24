@@ -7,8 +7,8 @@ export type RouteMeta = {
 export const routes: RouteMeta[] = [
   {
     path: '/',
-    title: 'v7m.org | Estrutura para Executar',
-    description: 'A V7M organiza, implanta e sustenta operações em educação, tecnologia aplicada e engenharia.',
+    title: 'V7M — Educação, Tecnologia e Engenharia',
+    description: 'V7M é uma estrutura operacional brasileira em Educação EAD e supletivo, rede de afiliados para vender cursos, programação e automações com IA, e engenharia civil e elétrica.',
   },
   {
     path: '/termos',
