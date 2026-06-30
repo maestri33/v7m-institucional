@@ -79,8 +79,8 @@ export default function AffiliatesSection() {
             </div>
           </div>
           <p className="mt-6 text-xs text-[var(--text-secondary)]">
-            *Benefícios e condições representativos — substituir pelas regras
-            oficiais do programa de afiliados quando disponíveis.
+            Benefícios e condições ilustrativos — as regras oficiais do programa
+            de afiliados serão detalhadas no cadastro.
           </p>
         </LiquidGlass>
 

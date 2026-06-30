@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '../../lib/utils'
 
@@ -8,28 +8,45 @@ const ANCHORS = [
   { id: 'afiliados', label: 'Afiliados' },
   { id: 'tech', label: 'Tech' },
   { id: 'engenharia', label: 'Engenharia' },
-  { id: 'video', label: 'Vídeo' },
   { id: 'contato', label: 'Contato' },
   { id: 'carreiras', label: 'Carreiras' },
 ]
 
-export interface HeaderProps {
-  fullpageApi?: {
-    moveTo: (anchor: string) => void
-  } | null
-}
-
-export function Header({ fullpageApi }: HeaderProps) {
+export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const toggleButtonRef = useRef<HTMLButtonElement | null>(null)
+
+  const closeMobile = () => {
+    setMobileOpen(false)
+    // Return focus to the toggle so keyboard users don't lose context.
+    toggleButtonRef.current?.focus()
+  }
 
   const handleAnchorClick = (anchor: string) => {
     setMobileOpen(false)
-    if (fullpageApi) {
-      fullpageApi.moveTo(anchor)
-      return
-    }
     window.location.assign(`#${anchor}`)
   }
+
+  // Escape closes the mobile menu; outside click closes it too.
+  useEffect(() => {
+    if (!mobileOpen) return
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMobile()
+    }
+    const onPointer = (e: PointerEvent) => {
+      const target = e.target as Node | null
+      if (target && !document.querySelector('header')?.contains(target)) {
+        setMobileOpen(false)
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    document.addEventListener('pointerdown', onPointer)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('pointerdown', onPointer)
+    }
+  }, [mobileOpen])
 
   return (
     <header
@@ -38,6 +55,7 @@ export function Header({ fullpageApi }: HeaderProps) {
         'bg-[rgba(10,10,10,0.72)] backdrop-blur-xl',
         'border-b border-[rgba(255,255,255,0.08)]',
       )}
+      aria-label="Cabeçalho principal"
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#home" className="flex items-center gap-3" aria-label="Voltar ao início">
@@ -53,7 +71,7 @@ export function Header({ fullpageApi }: HeaderProps) {
               key={anchor.id}
               type="button"
               onClick={() => handleAnchorClick(anchor.id)}
-              className="text-sm font-medium text-[var(--text-secondary)] hover:text-white transition-colors"
+              className="text-sm font-medium text-[var(--text-secondary)] hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)] rounded"
             >
               {anchor.label}
             </button>
@@ -61,8 +79,9 @@ export function Header({ fullpageApi }: HeaderProps) {
         </nav>
 
         <button
+          ref={toggleButtonRef}
           type="button"
-          className="md:hidden p-2 text-[var(--text-secondary)]"
+          className="md:hidden p-2 text-[var(--text-secondary)] rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
@@ -75,6 +94,8 @@ export function Header({ fullpageApi }: HeaderProps) {
       {mobileOpen && (
         <div
           id="mobile-menu"
+          role="dialog"
+          aria-label="Menu principal"
           className={cn(
             'md:hidden absolute top-full left-0 right-0',
             'bg-[rgba(10,10,10,0.95)] backdrop-blur-xl',
@@ -82,13 +103,13 @@ export function Header({ fullpageApi }: HeaderProps) {
             'px-5 py-4',
           )}
         >
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-1">
             {ANCHORS.map((anchor) => (
               <li key={anchor.id}>
                 <button
                   type="button"
                   onClick={() => handleAnchorClick(anchor.id)}
-                  className="w-full text-left text-base font-medium text-[var(--text-secondary)] hover:text-white transition-colors py-2"
+                  className="w-full text-left text-base font-medium text-[var(--text-secondary)] hover:text-white transition-colors py-2.5 px-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] focus-visible:bg-[rgba(255,255,255,0.04)]"
                 >
                   {anchor.label}
                 </button>

@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# QA screenshots & agent runtime (do not ship)
+shots/
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -31,9 +31,9 @@ const services = [
 ]
 
 const stats = [
-  { value: '+80', label: 'projetos entregues' },
-  { value: '2.4k+', label: 'horas economizadas por mês com automações' },
-  { value: '24/7', label: 'agentes e monitoramento ativos' },
+  { value: 'Sob medida', label: 'software construído para a sua operação' },
+  { value: 'IA + automação', label: 'menos trabalho repetitivo, mais foco no que importa' },
+  { value: 'Integrações', label: 'seus sistemas conversando entre si' },
 ]
 
 export default function TechSection() {
@@ -52,8 +52,8 @@ export default function TechSection() {
 
       <LiquidGlass className="relative z-10 w-full max-w-6xl p-8 md:p-12">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 24 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-10 md:mb-14"
@@ -84,8 +84,8 @@ export default function TechSection() {
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ y: 24 }}
+                whileInView={{ y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{
                   duration: 0.5,
@@ -110,8 +110,8 @@ export default function TechSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 24 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
           className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-10 md:mb-12"
@@ -119,9 +119,9 @@ export default function TechSection() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="flex flex-col items-center text-center px-4"
+              className="flex flex-col items-center text-center px-4 max-w-[220px]"
             >
-              <span className="text-3xl md:text-4xl font-extrabold text-gradient mb-1">
+              <span className="text-xl md:text-2xl font-extrabold text-gradient mb-1">
                 {stat.value}
               </span>
               <span className="text-sm md:text-base text-[var(--text-secondary)]">{stat.label}</span>
@@ -130,8 +130,8 @@ export default function TechSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 24 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
           className="flex justify-center"

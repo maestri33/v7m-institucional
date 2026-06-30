@@ -16,8 +16,12 @@ export interface TimelineProps {
 
 const easeOutQuart: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
+// Same fix as in EducationSection / EngineeringSection: hidden state must
+// keep content visible. Animation is enhancement, not a gate — otherwise
+// fullpage screenshots, no-JS, and lazy IntersectionObserver failures all
+// leave the section blank.
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
@@ -28,7 +32,7 @@ const containerVariants: Variants = {
 }
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24, scale: 0.96 },
+  hidden: { opacity: 1, y: 24, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,

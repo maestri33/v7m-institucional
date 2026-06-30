@@ -12,7 +12,10 @@ const { render, routes } = await import(
 const template = fs.readFileSync(path.resolve(root, 'dist/index.html'), 'utf-8')
 
 for (const route of routes) {
-  const appHtml = render()
+  // Translate the URL path into the same hash string App uses in the
+  // browser (e.g. "/termos" → "termos"). "/" renders HomeStack.
+  const ssrHash = route.path === '/' ? '' : route.path.replace(/^\//, '').toLowerCase()
+  const appHtml = render(ssrHash)
 
   let html = template
     .replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`)
@@ -45,6 +48,21 @@ for (const route of routes) {
       `<link rel="canonical" href="https://v7m.org${route.path}"`,
     )
     .replace(/<div id="root">[^]*<\/div>/, `<div id="root">${appHtml}</div>`)
+    // Per-route WebPage schema. The base Organization block in
+    // index.html stays constant (brand-level), this script adds the
+    // page-level metadata so each route matches its visible content.
+    .replace(
+      '<!--ROUTE_WEBPAGE_SCHEMA-->',
+      `<script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: route.title,
+        description: route.description,
+        url: `https://v7m.org${route.path}`,
+        inLanguage: 'pt-BR',
+        isPartOf: { '@type': 'WebSite', name: 'v7m.org', url: 'https://v7m.org/' },
+      })}</script>`,
+    )
 
   const outDir =
     route.path === '/'

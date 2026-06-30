@@ -7,6 +7,7 @@
     <meta name="keywords" content="v7m.org, educação ead, tecnologia aplicada, engenharia, infraestrutura" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0a0a0a" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'none';" />
 
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -16,7 +17,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="v7m.org" />
     <meta property="og:title" content="v7m.org | Estrutura para Executar" />
-    <meta property="og:description" content="Estrutura operacional para projetos em educação, tecnologia e engenharia." />
+    <meta property="og:description" content="A V7M organiza, implanta e sustenta operações em educação, tecnologia aplicada e engenharia." />
     <meta property="og:url" content="https://v7m.org/" />
     <meta property="og:image" content="https://v7m.org/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -25,8 +26,9 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="v7m.org | Estrutura para Executar" />
-    <meta name="twitter:description" content="Estrutura operacional para projetos em educação, tecnologia e engenharia." />
+    <meta name="twitter:description" content="A V7M organiza, implanta e sustenta operações em educação, tecnologia aplicada e engenharia." />
     <meta name="twitter:image" content="https://v7m.org/og-image.png" />
+    <meta name="twitter:image:alt" content="v7m.org | Estrutura para Executar" />
 
     <title>v7m.org | Estrutura para Executar</title>
 
@@ -42,12 +44,27 @@
       "description": "Estrutura operacional para projetos em educação, tecnologia aplicada e engenharia.",
       "email": "contato@v7m.org",
       "areaServed": "BR",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "contato@v7m.org",
+          "availableLanguage": ["Portuguese"]
+        }
+      ],
       "sameAs": []
     }
     </script>
+    <!--ROUTE_WEBPAGE_SCHEMA-->
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="font-family: system-ui, sans-serif; max-width: 32rem; margin: 4rem auto; padding: 1.5rem; color: #f0f0f0; background: #0a0a0a; text-align: center;">
+        <h1 style="font-size: 1.5rem; margin-bottom: 0.75rem;">v7m.org precisa de JavaScript</h1>
+        <p style="color: #a2a2a2; line-height: 1.5;">Este site é uma aplicação React. Habilite JavaScript no seu navegador para visualizar o conteúdo.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

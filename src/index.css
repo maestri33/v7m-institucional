@@ -208,4 +208,11 @@ section {
   html {
     scroll-behavior: auto;
   }
+
+  /* Disable the ambient aurora animation — users who set this preference
+     often get nauseated by perpetual background movement. Keep the
+     gradient static (a single non-animated state). */
+  .animate-\[aurora_18s_ease_infinite\] {
+    animation: none !important;
+  }
 }

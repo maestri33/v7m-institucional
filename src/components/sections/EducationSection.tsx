@@ -31,13 +31,17 @@ const features = [
 ]
 
 const stats = [
-  { value: '+50', label: 'polos parceiros' },
-  { value: '+5.000', label: 'alunos atendidos' },
-  { value: '100%', label: 'EAD' },
+  { value: 'Supletivo', label: 'ensino médio reconhecido, no seu ritmo' },
+  { value: 'EAD + polos', label: 'estude online com apoio presencial' },
+  { value: 'Acesso real', label: 'educação que cabe na sua rotina' },
 ]
 
+// `hidden` keeps opacity at 1 so content stays visible if JS fails, if a
+// screenshot tool captures without scrolling, or if IntersectionObserver
+// never fires — animation must be an enhancement, not a gate. The y
+// offset (24 → 0) still animates on hydrate, which is acceptable.
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
@@ -48,7 +52,7 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 1, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
@@ -117,17 +121,14 @@ export default function EducationSection() {
             className="flex flex-wrap items-center justify-center gap-6 md:gap-12 mb-10 md:mb-12"
           >
             {stats.map((stat) => (
-              <motion.div key={stat.label} variants={itemVariants} className="text-center min-w-[120px]">
-                <div className="text-3xl md:text-4xl font-extrabold text-gradient mb-1">{stat.value}</div>
+              <motion.div key={stat.label} variants={itemVariants} className="text-center max-w-[220px]">
+                <div className="text-xl md:text-2xl font-extrabold text-gradient mb-1">{stat.value}</div>
                 <div className="text-sm text-[var(--text-secondary)]">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
 
           <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 text-center">
-            <p className="text-sm text-[var(--text-secondary)] max-w-xl">
-              Os números acima são ilustrativos e serão atualizados conforme a consolidação da operação.
-            </p>
             <a
               href="https://supletivo.net.br"
               target="_blank"

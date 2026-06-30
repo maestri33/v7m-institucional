@@ -9,7 +9,7 @@ export default function VideoMaskSection() {
           V7M em <span className="text-gradient">Movimento</span>
         </h2>
         <p className="text-[var(--text-secondary)] leading-relaxed">
-          Uma breve apresentação visual da nossa operação, parceiros e resultados.
+          Conteúdo audiovisual em produção. Em breve, uma apresentação visual da nossa operação, parceiros e resultados.
         </p>
       </LiquidGlass>
     </Section>

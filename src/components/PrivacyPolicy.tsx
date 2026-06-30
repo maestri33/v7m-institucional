@@ -4,7 +4,8 @@ const LAST_UPDATED = '24/06/2026'
 
 export default function PrivacyPolicy() {
   return (
-    <section
+    <main
+      id="main-content"
       className="container legal-page"
       aria-labelledby="privacy-title"
     >
@@ -82,8 +83,21 @@ export default function PrivacyPolicy() {
             <span aria-hidden="true">←</span>
             Voltar ao início
           </a>
+
+          <nav
+            aria-label="Documentos relacionados"
+            className="mt-8 pt-6 border-t border-[rgba(255,255,255,0.08)] flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--text-secondary)]"
+          >
+            <span className="text-[var(--accent-gold)] font-semibold">Ver também:</span>
+            <a
+              href="/termos"
+              className="hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-gold)] rounded"
+            >
+              Termos de Uso
+            </a>
+          </nav>
         </div>
       </LiquidGlass>
-    </section>
+    </main>
   )
 }

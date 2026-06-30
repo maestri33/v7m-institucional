@@ -83,8 +83,8 @@ export default function ContactSection() {
   return (
     <Section id="contato" ariaLabelledBy="contact-title">
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ y: 24 }}
+        whileInView={{ y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="w-full max-w-3xl"
@@ -101,6 +101,11 @@ export default function ContactSection() {
           </div>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
+            <p className="text-xs text-[var(--text-secondary)]">
+              Campos marcados com <span className="text-[var(--accent-primary)]" aria-hidden="true">*</span>
+              <span className="sr-only">asterisco</span> são obrigatórios.
+            </p>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="space-y-1.5">
                 <label
@@ -108,6 +113,7 @@ export default function ContactSection() {
                   className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)]"
                 >
                   <User size={16} aria-hidden="true" /> Nome completo
+                  <span className="text-[var(--accent-primary)]" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="name"
@@ -118,6 +124,7 @@ export default function ContactSection() {
                   value={form.name}
                   onChange={handleChange}
                   required
+                  aria-required="true"
                   className="w-full rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] px-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] transition focus:border-[var(--accent-primary)] focus:bg-[rgba(255,255,255,0.07)]"
                 />
               </div>
@@ -128,6 +135,7 @@ export default function ContactSection() {
                   className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)]"
                 >
                   <Mail size={16} aria-hidden="true" /> Email profissional
+                  <span className="text-[var(--accent-primary)]" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="email"
@@ -138,6 +146,7 @@ export default function ContactSection() {
                   value={form.email}
                   onChange={handleChange}
                   required
+                  aria-required="true"
                   className="w-full rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] px-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] transition focus:border-[var(--accent-primary)] focus:bg-[rgba(255,255,255,0.07)]"
                 />
               </div>
@@ -192,6 +201,7 @@ export default function ContactSection() {
                 className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)]"
               >
                 <MessageSquare size={16} aria-hidden="true" /> Mensagem
+                <span className="text-[var(--accent-primary)]" aria-hidden="true">*</span>
               </label>
               <textarea
                 id="message"
@@ -201,6 +211,7 @@ export default function ContactSection() {
                 value={form.message}
                 onChange={handleChange}
                 required
+                aria-required="true"
                 className="w-full rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] px-4 py-3 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] transition focus:border-[var(--accent-primary)] focus:bg-[rgba(255,255,255,0.07)] resize-none"
               />
             </div>

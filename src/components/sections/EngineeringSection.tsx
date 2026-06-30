@@ -50,13 +50,13 @@ const services = [
 ]
 
 const stats = [
-  { value: '+120', label: 'projetos entregues' },
-  { value: '+80', label: 'obras executadas' },
-  { value: '+25', label: 'anos de experiência' },
+  { value: 'Projeto + Obra', label: 'do desenho técnico à entrega' },
+  { value: 'Conformidade', label: 'normas técnicas e segurança' },
+  { value: 'Laudos técnicos', label: 'pareceres e atestados de capacidade' },
 ]
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
@@ -66,7 +66,7 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 1, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
@@ -120,11 +120,11 @@ export default function EngineeringSection() {
           className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-12 md:mb-16"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl md:text-4xl font-extrabold text-gradient mb-1">
+            <div key={stat.label} className="text-center max-w-[200px]">
+              <div className="text-xl md:text-2xl font-extrabold text-gradient mb-1">
                 {stat.value}
               </div>
-              <div className="text-sm md:text-base text-[var(--text-secondary)] uppercase tracking-wide">
+              <div className="text-sm md:text-base text-[var(--text-secondary)] tracking-wide">
                 {stat.label}
               </div>
             </div>
