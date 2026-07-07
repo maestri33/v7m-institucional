@@ -30,6 +30,8 @@
   --text-secondary: #a2a2a2;
   --accent-primary: #cd9d58;
   --accent-secondary: #d6d6d6;
+  --accent-silver: #d6d6d6;
+  --accent-gold: #cd9d58;
   --accent-gradient: linear-gradient(135deg, #cd9d58, #eedda1);
   --accent-glow: rgba(205, 157, 88, 0.25);
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
