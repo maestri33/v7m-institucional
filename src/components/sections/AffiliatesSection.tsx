@@ -85,7 +85,9 @@ export default function AffiliatesSection() {
         </LiquidGlass>
 
         <a
-          href="#contato"
+          href="https://job.v7m.org/?utm_source=v7m.org&utm_medium=referral&utm_campaign=afiliados"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center justify-center rounded-full bg-[var(--accent-primary)] px-8 py-3 font-semibold text-[var(--near-black)] transition hover:bg-[var(--accent-silver)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
         >
           Quero ser afiliado
