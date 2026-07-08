@@ -33,7 +33,7 @@ for (const route of routes) {
     )
     .replace(
       /<meta property="og:url" content="[^"]*"/,
-      `<meta property="og:url" content="https://v7m.org${route.path}"`,
+      `<meta property="og:url" content="https://v7m.org${route.path}/"`,
     )
     .replace(
       /<meta name="twitter:title" content="[^"]*"/,
@@ -45,7 +45,7 @@ for (const route of routes) {
     )
     .replace(
       /<link rel="canonical" href="[^"]*"/,
-      `<link rel="canonical" href="https://v7m.org${route.path}"`,
+      `<link rel="canonical" href="https://v7m.org${route.path}/"`,
     )
     .replace(/<div id="root">[^]*<\/div>/, `<div id="root">${appHtml}</div>`)
     // Per-route WebPage schema. The base Organization block in

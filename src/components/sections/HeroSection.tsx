@@ -13,15 +13,15 @@ export default function HeroSection() {
           Estrutura para <span className="text-gradient">Executar</span>
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed mb-8 break-words">
-          A V7M organiza, implanta e sustenta operações em educação, tecnologia aplicada e engenharia.
+          Supletivo e EAD reconhecidos, software com IA e engenharia civil e elétrica — tudo numa só operação.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <a
             href="#educacao"
             aria-label="Conheça nossas operações — ir para a seção Educação"
-            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-6 py-3 text-sm md:text-base font-semibold text-[var(--near-black)] transition hover:bg-[#e0b570] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)]"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-[var(--accent-primary)] px-6 py-3 text-sm md:text-base font-semibold text-[var(--bg-primary)] transition hover:bg-[#e0b570] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)]"
           >
-            Nossas Operações
+            Ver o que fazemos
             <ArrowRight size={18} aria-hidden="true" />
           </a>
           <a

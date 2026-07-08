@@ -26,7 +26,7 @@ export default function TermsOfUse() {
           </p>
 
           <div>
-            <h2 className="text-xl font-bold text-[var(--accent-gold)] mb-2">
+            <h2 className="text-xl font-bold text-[var(--accent-primary)] mb-2">
               1. Natureza dos serviços
             </h2>
             <p className="text-[var(--text-secondary)] leading-relaxed">
@@ -35,7 +35,7 @@ export default function TermsOfUse() {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold text-[var(--accent-gold)] mb-2">
+            <h2 className="text-xl font-bold text-[var(--accent-primary)] mb-2">
               2. Propriedade intelectual
             </h2>
             <p className="text-[var(--text-secondary)] leading-relaxed">
@@ -44,7 +44,7 @@ export default function TermsOfUse() {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold text-[var(--accent-gold)] mb-2">
+            <h2 className="text-xl font-bold text-[var(--accent-primary)] mb-2">
               3. Uso permitido
             </h2>
             <ul className="list-disc pl-5 text-[var(--text-secondary)] leading-relaxed space-y-1">
@@ -55,7 +55,7 @@ export default function TermsOfUse() {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold text-[var(--accent-gold)] mb-2">
+            <h2 className="text-xl font-bold text-[var(--accent-primary)] mb-2">
               4. Limitação de responsabilidade
             </h2>
             <p className="text-[var(--text-secondary)] leading-relaxed">
@@ -64,7 +64,7 @@ export default function TermsOfUse() {
           </div>
 
           <div>
-            <h2 className="text-xl font-bold text-[var(--accent-gold)] mb-2">
+            <h2 className="text-xl font-bold text-[var(--accent-primary)] mb-2">
               5. Alterações
             </h2>
             <p className="text-[var(--text-secondary)] leading-relaxed">
@@ -78,7 +78,7 @@ export default function TermsOfUse() {
 
           <a
             href="#home"
-            className="inline-flex items-center gap-2 mt-6 text-[var(--accent-gold)] hover:text-[var(--accent-silver)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-gold)]"
+            className="inline-flex items-center gap-2 mt-6 text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
           >
             <span aria-hidden="true">←</span>
             Voltar ao início
@@ -88,10 +88,10 @@ export default function TermsOfUse() {
             aria-label="Documentos relacionados"
             className="mt-8 pt-6 border-t border-[rgba(255,255,255,0.08)] flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--text-secondary)]"
           >
-            <span className="text-[var(--accent-gold)] font-semibold">Ver também:</span>
+            <span className="text-[var(--accent-primary)] font-semibold">Ver também:</span>
             <a
               href="/privacidade"
-              className="hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-gold)] rounded"
+              className="hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
             >
               Política de Privacidade
             </a>

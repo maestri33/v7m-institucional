@@ -3,6 +3,7 @@ import { LiquidGlass } from '../ui/LiquidGlass'
 import { COPYRIGHT_LINE } from '../../lib/footer'
 
 export default function CareersFooterSection() {
+  // ponytail: build-time year avoids hydration mismatch on year boundary
   const year = new Date().getFullYear()
 
   return (
@@ -22,14 +23,14 @@ export default function CareersFooterSection() {
           className="mb-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1"
         >
           <a
-            href="#termos"
+            href="/termos"
             className="hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
           >
             Termos de Uso
           </a>
           <span aria-hidden="true" className="opacity-40">·</span>
           <a
-            href="#privacidade"
+            href="/privacidade"
             className="hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
           >
             Política de Privacidade

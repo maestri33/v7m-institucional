@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { AuroraBackground } from './components/ui/AuroraBackground'
 import { ErrorBoundary } from './components/ui/ErrorBoundary'
@@ -11,8 +11,10 @@ import TechSection from './components/sections/TechSection'
 import EngineeringSection from './components/sections/EngineeringSection'
 import ContactSection from './components/sections/ContactSection'
 import CareersFooterSection from './components/sections/CareersFooterSection'
-import TermsOfUse from './components/TermsOfUse'
-import PrivacyPolicy from './components/PrivacyPolicy'
+
+// ponytail: code-split legal pages — they're <1% of visits, save ~8 KB from main bundle
+const TermsOfUse = lazy(() => import('./components/TermsOfUse'))
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'))
 
 // Routing: hash-based with a path fallback (see readHash() below).
 // Sections render as a plain stack — there is no @fullpage anymore.
@@ -32,7 +34,7 @@ function HomeStack() {
     <>
       <SkipLink />
       <Header />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <EducationSection />
         <AffiliatesSection />
@@ -71,10 +73,11 @@ function readHash() {
   // (e.g. "/termos" with no hash) so direct-path access works the same
   // as hash-routed access. Without this, the static prerender renders
   // the legal content but hydration swaps it for HomeStack.
+  // ponytail: path takes priority over hash to avoid /termos#privacidade showing wrong page
+  const path = window.location.pathname.replace(/^\//, '').replace(/\/+$/, '').toLowerCase()
+  if (path && path !== '') return path
   const hash = window.location.hash.replace(/^#/, '').trim().toLowerCase()
-  if (hash) return hash
-  const path = window.location.pathname.replace(/^\//, '').toLowerCase()
-  return path
+  return hash
 }
 
 export interface AppProps {
@@ -103,7 +106,9 @@ export default function App({ ssrHash }: AppProps = {}) {
       <ErrorBoundary>
         <SkipLink />
         <LegalHeader label="Termos de Uso" />
-        <TermsOfUse />
+        <Suspense fallback={<div className="legal-page container"><p className="text-[var(--text-secondary)]">Carregando…</p></div>}>
+          <TermsOfUse />
+        </Suspense>
         <LegalFooter />
       </ErrorBoundary>
     )
@@ -114,7 +119,9 @@ export default function App({ ssrHash }: AppProps = {}) {
       <ErrorBoundary>
         <SkipLink />
         <LegalHeader label="Política de Privacidade" />
-        <PrivacyPolicy />
+        <Suspense fallback={<div className="legal-page container"><p className="text-[var(--text-secondary)]">Carregando…</p></div>}>
+          <PrivacyPolicy />
+        </Suspense>
         <LegalFooter />
       </ErrorBoundary>
     )

@@ -130,10 +130,10 @@ export default function EducationSection() {
 
           <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 text-center">
             <a
-              href="https://supletivo.net.br"
+              href="https://supletivo.net.br?utm_source=v7m.org&amp;utm_medium=referral&amp;utm_campaign=educacao"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-primary)] px-6 py-3 text-sm font-semibold text-[var(--near-black)] hover:bg-[#e6b978] transition-colors focus-visible:outline-offset-4"
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-primary)] px-6 py-3 text-sm font-semibold text-[var(--bg-primary)] hover:bg-[#e6b978] transition-colors focus-visible:outline-offset-4"
             >
               Conheça o supletivo.net.br
               <ArrowUpRight className="w-4 h-4" aria-hidden="true" />

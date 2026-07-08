@@ -20,6 +20,22 @@ export class ErrorBoundary extends Component<Props, State> {
     return { error }
   }
 
+  componentDidMount(): void {
+    // ponytail: catch async errors (useEffect, event handlers) that React Error Boundaries miss
+    this._onError = (e: ErrorEvent) => this.setState({ error: e.error || new Error(e.message) })
+    this._onRejection = (e: PromiseRejectionEvent) => this.setState({ error: e.reason instanceof Error ? e.reason : new Error(String(e.reason)) })
+    window.addEventListener('error', this._onError)
+    window.addEventListener('unhandledrejection', this._onRejection)
+  }
+
+  componentWillUnmount(): void {
+    if (this._onError) window.removeEventListener('error', this._onError)
+    if (this._onRejection) window.removeEventListener('unhandledrejection', this._onRejection)
+  }
+
+  private _onError?: (e: ErrorEvent) => void
+  private _onRejection?: (e: PromiseRejectionEvent) => void
+
   componentDidCatch(error: Error, info: ErrorInfo): void {
     // eslint-disable-next-line no-console
     console.error('[ErrorBoundary]', error, info.componentStack)
@@ -51,7 +67,7 @@ export class ErrorBoundary extends Component<Props, State> {
           <button
             type="button"
             onClick={this.handleReset}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[var(--accent-primary)] text-[var(--near-black)] font-semibold transition-all hover:bg-[var(--accent-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)]"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] font-semibold transition-all hover:bg-[var(--accent-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)]"
           >
             Voltar ao início
           </button>
