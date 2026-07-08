@@ -64,7 +64,7 @@ export function Header() {
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
         <a href="#home" className="flex items-center gap-3" aria-label="Voltar ao início">
-          <img src="/logo.svg" alt="" className="h-8 w-auto" aria-hidden="true" />
+          <img src="/logo.svg" alt="" className="h-8 w-auto" aria-hidden="true" width="134" height="32" />
           <span className="text-xl md:text-2xl font-extrabold tracking-tight">
             v7m<span className="text-gradient">.org</span>
           </span>
