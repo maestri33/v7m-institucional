@@ -138,7 +138,7 @@ export default function TechSection() {
         >
           <a
             href="#contato"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm md:text-base bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:bg-[var(--accent-secondary)] transition-colors duration-200 shadow-[0_0_24px_rgba(205,157,88,0.25)]"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm md:text-base bg-[var(--accent-primary)] text-[var(--bg-primary)] hover:bg-[#e0b570] transition-colors duration-200 shadow-[0_0_24px_rgba(205,157,88,0.25)]"
           >
             <Zap className="w-5 h-5" aria-hidden="true" />
             Falar com o time de tecnologia

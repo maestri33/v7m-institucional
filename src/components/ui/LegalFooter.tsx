@@ -1,6 +1,7 @@
 import { COPYRIGHT_LINE } from '../../lib/footer'
 
 export function LegalFooter() {
+  // ponytail: build-time year avoids hydration mismatch on year boundary
   const year = new Date().getFullYear()
   return (
     <footer

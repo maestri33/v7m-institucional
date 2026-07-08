@@ -5,15 +5,15 @@ import { UserPlus, GraduationCap, Megaphone, Coins } from 'lucide-react'
 
 const AFFILIATE_STEPS = [
   {
-    title: 'Cadastre-se como afiliado',
+    title: 'Fale com a gente',
     description:
-      'Preencha seu cadastro gratuitamente e comece a representar a V7M em poucos minutos.',
+      'Entre em contato para conhecer o programa e tirar suas dúvidas.',
     icon: UserPlus,
   },
   {
-    title: 'Acesse treinamento e materiais',
+    title: 'Receba treinamento e materiais',
     description:
-      'Receba conteúdos, scripts e material de divulgação validado para converter vendas.',
+      'Tenha acesso a conteúdos, scripts e material de divulgação validado para converter vendas.',
     icon: GraduationCap,
   },
   {
@@ -25,7 +25,7 @@ const AFFILIATE_STEPS = [
   {
     title: 'Receba comissões',
     description:
-      'Acompanhe suas vendas e comissões competitivas pelo painel do afiliado.',
+      'Ganhe por cada matrícula confirmada que vier das suas indicações.',
     icon: Coins,
   },
 ]
@@ -42,8 +42,8 @@ export default function AffiliatesSection() {
             Rede de <span className="text-gradient">Afiliados</span>
           </h2>
           <p className="mt-4 leading-relaxed text-[var(--text-secondary)]">
-            Junte-se à rede de afiliados da V7M e ganhe comissões vendendo
-            cursos supletivo, EAD e as próximas formações que lançarmos.
+            Indique cursos, ganhe comissão. Junte-se à rede de afiliados da V7M
+            e receba por cada matrícula confirmada.
           </p>
         </LiquidGlass>
 
@@ -71,10 +71,10 @@ export default function AffiliatesSection() {
             </div>
             <div>
               <h3 className="font-semibold text-[var(--text-primary)]">
-                Suporte e painel
+                Suporte dedicado
               </h3>
               <p className="text-sm text-[var(--text-secondary)]">
-                Acompanhamento de resultados em tempo real.
+                Acompanhamento próximo da equipe V7M.
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function AffiliatesSection() {
 
         <a
           href="#contato"
-          className="inline-flex items-center justify-center rounded-full bg-[var(--accent-primary)] px-8 py-3 font-semibold text-[var(--near-black)] transition hover:bg-[var(--accent-silver)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
+          className="inline-flex items-center justify-center rounded-full bg-[var(--accent-primary)] px-8 py-3 font-semibold text-[var(--bg-primary)] transition hover:bg-[#e0b570] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
         >
           Quero ser afiliado
         </a>

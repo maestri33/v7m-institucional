@@ -12,6 +12,7 @@ export function Section({ children, className, id, ariaLabelledBy }: SectionProp
     <section
       id={id}
       aria-labelledby={ariaLabelledBy}
+      tabIndex={-1}
       className={cn(
         // scroll-mt-* matches the fixed header height (h-16 / md:h-20 in
         // Header.tsx). Without this, clicking an anchor like #educacao

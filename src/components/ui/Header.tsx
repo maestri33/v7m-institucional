@@ -22,9 +22,14 @@ export function Header() {
     toggleButtonRef.current?.focus()
   }
 
-  const handleAnchorClick = (anchor: string) => {
+  const handleMobileNav = (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
+    // ponytail: close mobile menu on nav; let <a href> handle the navigation natively
     setMobileOpen(false)
-    window.location.assign(`#${anchor}`)
+    // If we're on a legal page (path !== '/'), navigate to home + hash
+    if (window.location.pathname.replace(/\/+$/, '') !== '') {
+      e.preventDefault()
+      window.location.assign(`/#${anchor}`)
+    }
   }
 
   // Escape closes the mobile menu; outside click closes it too.
@@ -67,14 +72,14 @@ export function Header() {
 
         <nav aria-label="Navegação principal" className="hidden md:flex items-center gap-6">
           {ANCHORS.map((anchor) => (
-            <button
+            <a
               key={anchor.id}
-              type="button"
-              onClick={() => handleAnchorClick(anchor.id)}
+              href={`#${anchor.id}`}
+              onClick={(e) => handleMobileNav(e, anchor.id)}
               className="text-sm font-medium text-[var(--text-secondary)] hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)] rounded"
             >
               {anchor.label}
-            </button>
+            </a>
           ))}
         </nav>
 
@@ -94,8 +99,6 @@ export function Header() {
       {mobileOpen && (
         <div
           id="mobile-menu"
-          role="dialog"
-          aria-label="Menu principal"
           className={cn(
             'md:hidden absolute top-full left-0 right-0',
             'bg-[rgba(10,10,10,0.95)] backdrop-blur-xl',
@@ -106,13 +109,13 @@ export function Header() {
           <ul className="flex flex-col gap-1">
             {ANCHORS.map((anchor) => (
               <li key={anchor.id}>
-                <button
-                  type="button"
-                  onClick={() => handleAnchorClick(anchor.id)}
-                  className="w-full text-left text-base font-medium text-[var(--text-secondary)] hover:text-white transition-colors py-2.5 px-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] focus-visible:bg-[rgba(255,255,255,0.04)]"
+                <a
+                  href={`#${anchor.id}`}
+                  onClick={(e) => handleMobileNav(e, anchor.id)}
+                  className="block w-full text-left text-base font-medium text-[var(--text-secondary)] hover:text-white transition-colors py-2.5 px-2 rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] focus-visible:bg-[rgba(255,255,255,0.04)]"
                 >
                   {anchor.label}
-                </button>
+                </a>
               </li>
             ))}
           </ul>

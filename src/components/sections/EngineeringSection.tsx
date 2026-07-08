@@ -134,7 +134,7 @@ export default function EngineeringSection() {
         <motion.div variants={itemVariants} className="text-center">
           <a
             href="#contato"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[var(--accent-primary)] text-[var(--near-black)] font-semibold text-lg transition-all hover:bg-[var(--accent-secondary)] hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
+            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] font-semibold text-lg transition-all hover:bg-[#e0b570] hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
           >
             Solicitar orçamento
           </a>
