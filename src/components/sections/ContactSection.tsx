@@ -132,7 +132,7 @@ export default function ContactSection() {
             </p>
           </div>
 
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          <form className="space-y-5" onSubmit={handleSubmit} method="get" action={`mailto:${CONTACT_EMAIL}`}>
             <p className="text-xs text-[var(--text-secondary)]">
               Campos marcados com <span className="text-[var(--accent-primary)]" aria-hidden="true">*</span>
               <span className="sr-only">asterisco</span> são obrigatórios.
