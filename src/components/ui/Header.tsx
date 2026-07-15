@@ -54,6 +54,7 @@ export function Header() {
   }, [mobileOpen])
 
   return (
+    <>
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50',
@@ -122,5 +123,28 @@ export function Header() {
         </div>
       )}
     </header>
+    <nav
+      aria-label="Links legais"
+      className="fixed top-16 md:top-20 left-0 right-0 z-40 bg-[rgba(10,10,10,0.5)] border-b border-[rgba(255,255,255,0.08)]"
+    >
+      <div className="container flex items-center justify-end h-9 gap-4 text-xs text-[var(--text-secondary)]">
+        <a
+          href="/termos"
+          className="hover:text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
+        >
+          Termos de Uso
+        </a>
+        <span aria-hidden="true" className="opacity-40">
+          ·
+        </span>
+        <a
+          href="/privacidade"
+          className="hover:text-white transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)] rounded"
+        >
+          Política de Privacidade
+        </a>
+      </div>
+    </nav>
+    </>
   )
 }
