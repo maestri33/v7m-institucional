@@ -8,6 +8,7 @@
   --text-secondary: #a2a2a2;
   --accent-primary: #cd9d58;
   --accent-secondary: #d6d6d6;
+  --accent-highlight: #eedda1;
   --accent-gradient: linear-gradient(135deg, #cd9d58, #eedda1);
   --accent-glow: rgba(205, 157, 88, 0.25);
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -176,6 +177,46 @@ section {
   }
 }
 
+@keyframes kenburnsA {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.18) translate(2%, -2%); }
+}
+
+@keyframes kenburnsB {
+  0% { transform: scale(1.15) translate(-2%, 1%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+@keyframes lampGrow {
+  from { width: 8rem; opacity: 0.3; }
+  to { width: min(30rem, 60vw); opacity: 1; }
+}
+
+@keyframes riseUp {
+  from { opacity: 0; transform: translateY(48px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cascade {
+  from { opacity: 0; transform: translateX(90px) rotate(1.5deg); }
+  to { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes drawPath {
+  from { stroke-dashoffset: 900; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes movingBorder {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(205,157,88,0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(205,157,88,0); }
+}
+
 @media (max-width: 768px) {
   section {
     padding: clamp(3rem, 6vw, 4rem) 0;
@@ -191,6 +232,20 @@ section {
      often get nauseated by perpetual background movement. Keep the
      gradient static (a single non-animated state). */
   .animate-\[aurora_18s_ease_infinite\] {
+    animation: none !important;
+  }
+
+  .cinematic-layer,
+  .lamp-line,
+  .bento-card,
+  .affiliate-card,
+  .moving-border,
+  .pulse-dot,
+  [style*="riseUp"],
+  [style*="cascade"],
+  [style*="kenburns"],
+  [style*="lampGrow"],
+  [style*="drawPath"] {
     animation: none !important;
   }
 }
