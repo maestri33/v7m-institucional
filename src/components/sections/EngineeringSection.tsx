@@ -1,145 +1,70 @@
-import { motion } from 'framer-motion'
-import {
-  Building2,
-  ClipboardCheck,
-  Construction,
-  HardHat,
-  Ruler,
-  Zap,
-} from 'lucide-react'
 import { Section } from '../ui/Section'
-import { LiquidGlass } from '../ui/LiquidGlass'
+import { BlueprintSVG } from '../ui/BlueprintSVG'
 
-const services = [
-  {
-    icon: Ruler,
-    title: 'Projetos civis',
-    description:
-      'Plantas, dimensionamento e viabilidade técnica para obras residenciais, comerciais e industriais.',
-  },
-  {
-    icon: Construction,
-    title: 'Execução de obras',
-    description:
-      'Gestão de obra, mão de obra qualificada e fiscalização para entregas dentro do prazo e orçamento.',
-  },
-  {
-    icon: Zap,
-    title: 'Projetos elétricos',
-    description:
-      'Elaboração de projetos elétricos de baixa e média tensão com conformidade técnica e segurança.',
-  },
-  {
-    icon: HardHat,
-    title: 'Instalações e manutenções',
-    description:
-      'Montagem, manutenção preventiva e corretiva de instalações elétricas e sistemas prediais.',
-  },
-  {
-    icon: ClipboardCheck,
-    title: 'Laudos técnicos',
-    description:
-      'Pareceres, laudos de inspeção e atestados de capacidade técnica para órgãos e licitações.',
-  },
-  {
-    icon: Building2,
-    title: 'Consultoria especializada',
-    description:
-      'Assessoria em infraestrutura, regularização, compatibilização de projetos e sustentabilidade operacional.',
-  },
-]
-
-const stats = [
-  { value: 'Projeto + Obra', label: 'do desenho técnico à entrega' },
-  { value: 'Conformidade', label: 'normas técnicas e segurança' },
-  { value: 'Laudos técnicos', label: 'pareceres e atestados de capacidade' },
-]
-
-const containerVariants = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 1, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' as const },
-  },
-}
+const SERVICES = [
+  'Projetos civis',
+  'Execução de obras',
+  'Projetos elétricos',
+  'Instalações e manutenções',
+  'Laudos técnicos',
+  'Consultoria',
+] as const
 
 export default function EngineeringSection() {
   return (
-    <Section id="engenharia" ariaLabelledBy="engineering-title" className="py-20">
-      <motion.div
-        className="w-full max-w-7xl mx-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
-          <h2
-            id="engineering-title"
-            className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4"
-          >
-            Engenharia <span className="text-gradient">Civil & Elétrica</span>
-          </h2>
-          <p className="text-[var(--text-secondary)] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Projetos, execução e consultoria técnica com capacidade real de operação para viabilizar obras e infraestrutura de segurança.
-          </p>
-        </motion.div>
+    <Section id="engenharia" ariaLabelledBy="eng-title" className="text-center md:text-left">
+      {/* Blueprint decorativo à direita */}
+      <div className="absolute right-[-4%] top-1/2 -translate-y-1/2 h-[86%] w-auto opacity-50 pointer-events-none hidden md:block">
+        <BlueprintSVG className="h-full w-auto" />
+      </div>
 
-        <motion.div
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 md:mb-16"
+      <div className="relative z-10 max-w-2xl mx-auto md:mx-0">
+        <div
+          className="text-xs font-semibold tracking-[0.38em] uppercase text-[var(--accent-primary)] mb-5"
+          style={{ animation: 'riseUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s both' }}
         >
-          {services.map((service) => (
-            <motion.div key={service.title} variants={itemVariants}>
-              <LiquidGlass className="h-full p-6 md:p-8 flex flex-col">
-                <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-[rgba(205,157,88,0.12)] border border-[rgba(205,157,88,0.2)]">
-                  <service.icon className="w-6 h-6 text-[var(--accent-primary)]" aria-hidden="true" />
-                </div>
-                <h3 className="text-xl md:text-2xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed flex-grow">
-                  {service.description}
-                </p>
-              </LiquidGlass>
-            </motion.div>
-          ))}
-        </motion.div>
+          04 · Engenharia Civil &amp; Elétrica
+        </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mb-12 md:mb-16"
+        <h2
+          id="eng-title"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-5"
+          style={{ animation: 'riseUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.28s both' }}
         >
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center max-w-[200px]">
-              <div className="text-xl md:text-2xl font-extrabold text-gradient mb-1">
-                {stat.value}
-              </div>
-              <div className="text-sm md:text-base text-[var(--text-secondary)] tracking-wide">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+          Do projeto
+          <br />
+          <span className="text-gradient">à entrega.</span>
+        </h2>
 
-        <motion.div variants={itemVariants} className="text-center">
-          <a
-            href="#contato"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[var(--accent-primary)] text-[var(--bg-primary)] font-semibold text-lg transition-all hover:bg-[#e0b570] hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-primary)]"
-          >
-            Solicitar orçamento
-          </a>
-        </motion.div>
-      </motion.div>
+        <p
+          className="text-base md:text-lg text-[var(--text-secondary)] max-w-xl leading-relaxed mb-8"
+          style={{ animation: 'riseUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.4s both' }}
+        >
+          Projetos, execução, laudos e consultoria — civil e elétrica com conformidade técnica e capacidade real de operação.
+        </p>
+
+        <div
+          className="flex flex-wrap gap-2 max-w-xl mb-9"
+          style={{ animation: 'riseUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.52s both' }}
+        >
+          {SERVICES.map((s) => (
+            <span
+              key={s}
+              className="text-sm text-[var(--text-secondary)] border border-[rgba(255,255,255,0.12)] bg-[rgba(15,15,15,0.72)] rounded-full px-4 py-2"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href="#contato"
+          className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-primary)] px-8 py-3.5 text-sm md:text-base font-semibold text-[var(--bg-primary)] transition hover:bg-[#e0b570] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)]"
+          style={{ animation: 'riseUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.64s both' }}
+        >
+          Solicitar orçamento
+        </a>
+      </div>
     </Section>
   )
 }
