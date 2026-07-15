@@ -114,10 +114,7 @@ App.tsx → HomeStack
 
 - Substituir `Timeline` por 4 cards numerados com `cascade` (delay 0.2s → 0.56s)
 - Card #4 destacado (border + glow dourado)
-- Tabela de faixas estática com 3 linhas (valores a serem definidos pelo Victor antes da J4):
-  - Linha 1: "1 matrícula confirmada" — valor a definir
-  - Linha 2: "5 a 9 matrículas no mês" — valor a definir
-  - Linha 3: "10 ou mais no mês" — valor a definir
+- Tabela de faixas estática com 3 linhas **sem valores numéricos** (placeholder honesto: "Consulte condições oficiais no cadastro"):
 - CTA "Quero ser afiliado" mantido
 
 ### 5.5 TechSection (MÍNIMA)
