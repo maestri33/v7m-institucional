@@ -1,146 +1,146 @@
-import { motion } from 'framer-motion'
-import { GraduationCap, BookOpen, Users, MapPin, School, ArrowUpRight } from 'lucide-react'
+import { GraduationCap, MapPin, BookOpen, Users } from 'lucide-react'
 import { Section } from '../ui/Section'
-import { LiquidGlass } from '../ui/LiquidGlass'
-
-const features = [
-  {
-    icon: MapPin,
-    title: 'Rede de Polos',
-    description:
-      'Polos presenciais espalhados estrategicamente para oferecer suporte local aos alunos da modalidade EAD.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Cursos Online',
-    description:
-      'Plataforma digital com conteúdo organizado, acompanhamento pedagógico e flexibilidade de estudo.',
-  },
-  {
-    icon: School,
-    title: 'Supletivo',
-    description:
-      'Ensino médio concluído de forma ágil e reconhecida, voltado para quem precisa retomar os estudos.',
-  },
-  {
-    icon: Users,
-    title: 'Parceiros & Afiliados',
-    description:
-      'Rede de parceiros comercializa as matrículas e ajuda a levar a educação para mais pessoas.',
-  },
-]
-
-const stats = [
-  { value: 'Supletivo', label: 'ensino médio reconhecido, no seu ritmo' },
-  { value: 'EAD + polos', label: 'estude online com apoio presencial' },
-  { value: 'Acesso real', label: 'educação que cabe na sua rotina' },
-]
-
-// `hidden` keeps opacity at 1 so content stays visible if JS fails, if a
-// screenshot tool captures without scrolling, or if IntersectionObserver
-// never fires — animation must be an enhancement, not a gate. The y
-// offset (24 → 0) still animates on hydrate, which is acceptable.
-const containerVariants = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 1, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
-  },
-}
 
 export default function EducationSection() {
   return (
-    <Section id="educacao" ariaLabelledBy="education-title">
-      <motion.div
-        className="w-full max-w-6xl"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+    <Section id="educacao" ariaLabelledBy="edu-title" className="text-center">
+      <div
+        className="text-xs font-semibold tracking-[0.38em] uppercase text-[var(--accent-primary)] mb-5"
+        style={{ animation: 'riseUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s both' }}
       >
-        <LiquidGlass className="p-8 md:p-12 lg:p-16">
-          <div className="text-center mb-10 md:mb-14">
-            <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] px-4 py-1.5 mb-6"
-            >
-              <GraduationCap className="w-4 h-4 text-[var(--accent-primary)]" aria-hidden="true" />
-              <span className="text-sm font-medium text-[var(--text-secondary)]">Educação EAD / Supletivo</span>
-            </motion.div>
+        01 · Educação EAD / Supletivo
+      </div>
 
-            <motion.h2
-              id="education-title"
-              variants={itemVariants}
-              className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5"
-            >
-              Educação <span className="text-gradient">EAD</span>
-            </motion.h2>
+      <h2
+        id="edu-title"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-5"
+        style={{ animation: 'riseUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.32s both' }}
+      >
+        Quem parou,
+        <br />
+        <span className="text-gradient">volta a estudar.</span>
+      </h2>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed"
-            >
-              Operamos uma rede de polos presenciais e cursos online para ampliar o acesso à educação.
-              Hoje nosso foco é o supletivo, com planos de expansão para novas formações.
-            </motion.p>
+      <p
+        className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed mb-10 px-2"
+        style={{ animation: 'riseUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.44s both' }}
+      >
+        Supletivo reconhecido e EAD com polos presenciais de apoio. Educação que cabe na rotina de quem trabalha.
+      </p>
+
+      {/* Bento grid 2x2: card grande (Supletivo) + 3 cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto mb-10 text-left">
+        {/* Card grande: Supletivo (col-span 2 em sm+) */}
+        <article
+          className="bento-card sm:col-span-2 rounded-2xl border border-[rgba(205,157,88,0.22)] p-6 flex flex-col justify-end min-h-[140px] transition hover:border-[rgba(205,157,88,0.5)] hover:-translate-y-1"
+          style={{
+            background:
+              'linear-gradient(135deg, rgba(205,157,88,0.10), rgba(15,15,15,0.72) 55%)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            animation: 'riseUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.5s both',
+          }}
+        >
+          <GraduationCap
+            size={26}
+            className="text-[var(--accent-primary)] mb-3"
+            aria-hidden="true"
+            strokeWidth={1.5}
+          />
+          <div className="text-base md:text-lg font-semibold tracking-tight">Supletivo</div>
+          <div className="text-sm text-[var(--text-secondary)] leading-relaxed mt-1">
+            Ensino médio concluído de forma ágil e reconhecida — o carro-chefe da operação.
           </div>
+        </article>
 
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-14"
-          >
-            {features.map((feature) => (
-              <motion.div key={feature.title} variants={itemVariants}>
-                <LiquidGlass className="h-full p-6 md:p-7 text-left hover:border-[rgba(205,157,88,0.25)] transition-colors">
-                  <feature.icon
-                    className="w-7 h-7 text-[var(--accent-primary)] mb-4"
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                  />
-                  <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{feature.description}</p>
-                </LiquidGlass>
-              </motion.div>
-            ))}
-          </motion.div>
+        {/* Card menor: Rede de polos */}
+        <article
+          className="bento-card rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(15,15,15,0.72)] backdrop-blur-xl p-6 flex flex-col justify-end min-h-[140px] transition hover:border-[rgba(205,157,88,0.4)] hover:-translate-y-1"
+          style={{
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            animation: 'riseUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.58s both',
+          }}
+        >
+          <MapPin
+            size={22}
+            className="text-[var(--accent-primary)] mb-3"
+            aria-hidden="true"
+            strokeWidth={1.5}
+          />
+          <div className="text-base font-semibold tracking-tight">Rede de polos</div>
+          <div className="text-sm text-[var(--text-secondary)] leading-relaxed mt-1">
+            Apoio presencial onde o aluno está.
+          </div>
+        </article>
 
-          <motion.div
-            variants={containerVariants}
-            className="flex flex-wrap items-center justify-center gap-6 md:gap-12 mb-10 md:mb-12"
-          >
-            {stats.map((stat) => (
-              <motion.div key={stat.label} variants={itemVariants} className="text-center max-w-[220px]">
-                <div className="text-xl md:text-2xl font-extrabold text-gradient mb-1">{stat.value}</div>
-                <div className="text-sm text-[var(--text-secondary)]">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+        {/* Card menor: Cursos online */}
+        <article
+          className="bento-card rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(15,15,15,0.72)] p-6 flex flex-col justify-end min-h-[140px] transition hover:border-[rgba(205,157,88,0.4)] hover:-translate-y-1"
+          style={{
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            animation: 'riseUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.66s both',
+          }}
+        >
+          <BookOpen
+            size={22}
+            className="text-[var(--accent-primary)] mb-3"
+            aria-hidden="true"
+            strokeWidth={1.5}
+          />
+          <div className="text-base font-semibold tracking-tight">Cursos online</div>
+          <div className="text-sm text-[var(--text-secondary)] leading-relaxed mt-1">
+            Plataforma com acompanhamento pedagógico.
+          </div>
+        </article>
 
-          <motion.div variants={itemVariants} className="flex flex-col items-center gap-3 text-center">
-            <a
-              href="https://supletivo.net.br?utm_source=v7m.org&amp;utm_medium=referral&amp;utm_campaign=educacao"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-primary)] px-6 py-3 text-sm font-semibold text-[var(--bg-primary)] hover:bg-[#e6b978] transition-colors focus-visible:outline-offset-4"
-            >
-              Conheça o supletivo.net.br
-              <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
-            </a>
-          </motion.div>
-        </LiquidGlass>
-      </motion.div>
+        {/* Card full-width: Parceiros */}
+        <article
+          className="bento-card sm:col-span-2 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(15,15,15,0.72)] p-6 flex flex-col justify-end min-h-[140px] transition hover:border-[rgba(205,157,88,0.4)] hover:-translate-y-1"
+          style={{
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            animation: 'riseUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.74s both',
+          }}
+        >
+          <Users
+            size={22}
+            className="text-[var(--accent-primary)] mb-3"
+            aria-hidden="true"
+            strokeWidth={1.5}
+          />
+          <div className="text-base font-semibold tracking-tight">Parceiros &amp; afiliados</div>
+          <div className="text-sm text-[var(--text-secondary)] leading-relaxed mt-1">
+            Rede que leva matrículas a mais pessoas.
+          </div>
+        </article>
+      </div>
+
+      {/* CTA com UTM (resolve A15 da auditoria) */}
+      <a
+        href="https://supletivo.net.br?utm_source=v7m.org&utm_medium=referral&utm_campaign=educacao"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-primary)] px-7 py-3 text-sm md:text-base font-semibold text-[var(--bg-primary)] transition hover:bg-[#e0b570] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-primary)]"
+        style={{ animation: 'riseUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.82s both' }}
+      >
+        Conheça o supletivo.net.br
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M7 7h10v10" />
+          <path d="M7 17 17 7" />
+        </svg>
+      </a>
     </Section>
   )
 }

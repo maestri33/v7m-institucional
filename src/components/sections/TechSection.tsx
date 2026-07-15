@@ -65,6 +65,15 @@ export default function TechSection() {
             </span>
           </div>
 
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[rgba(205,157,88,0.3)] bg-[rgba(205,157,88,0.08)] mb-5 text-[10px] sm:text-xs font-semibold tracking-[0.16em] uppercase text-[var(--accent-primary)]">
+            <span
+              aria-hidden="true"
+              className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)]"
+              style={{ animation: 'pulseDot 2.4s ease infinite' }}
+            />
+            em breve: seção regenerada por IA
+          </div>
+
           <h2
             id="tech-title"
             className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5"
