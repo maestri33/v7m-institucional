@@ -1,7 +1,7 @@
 ---
 title: V7M Home Redesign — Restyling C (scroll-preserving)
 date: 2026-07-14
-status: approved (Fase 0)
+status: spec-approved (Fase 0 complete, awaiting writing-plans)
 source: claude.ai/design/p/642b415b-5fcd-40c5-b02c-1a88120986d4 (V7M Redesign.dc.html)
 repo: /opt/test/v7m-institucional/
 branch: v7m-audit-fixes-2 → main (merge direto, rollback manual)
@@ -114,7 +114,10 @@ App.tsx → HomeStack
 
 - Substituir `Timeline` por 4 cards numerados com `cascade` (delay 0.2s → 0.56s)
 - Card #4 destacado (border + glow dourado)
-- Tabela de faixas estática abaixo (placeholder editável — você define os valores)
+- Tabela de faixas estática com 3 linhas (valores a serem definidos pelo Victor antes da J4):
+  - Linha 1: "1 matrícula confirmada" — valor a definir
+  - Linha 2: "5 a 9 matrículas no mês" — valor a definir
+  - Linha 3: "10 ou mais no mês" — valor a definir
 - CTA "Quero ser afiliado" mantido
 
 ### 5.5 TechSection (MÍNIMA)
@@ -140,9 +143,10 @@ App.tsx → HomeStack
 
 ### 5.9 LegalHeader (NOVO — fixo no topo)
 
-- Já existe um `LegalHeader` em `App.tsx` (no ramo `/termos`, `/privacidade`)
-- **Não confundir**: o que precisa existir é um mini header FIXO com links Termos/Privacidade, sempre visível
-- Implementação: `<a href="/termos">Termos</a> · <a href="/privacidade">Privacidade</a>` no topo direito do Header atual ou como barra separada abaixo dele
+- Já existe um `LegalHeader` em `App.tsx` (no ramo `/termos`, `/privacidade`, com `ArrowLeft`)
+- **Não confundir**: o que precisa existir é um **mini bloco de links legais FIXO**, sempre visível, com âncoras reais para as páginas `/termos` e `/privacidade`
+- Implementação escolhida: como barra separada abaixo do Header atual, com 2 âncoras (`<a href="/termos">Termos</a>` · `<a href="/privacidade">Privacidade</a>`), texto pequeno (`text-xs`), `text-[var(--text-secondary)]`, `border-b border-[rgba(255,255,255,0.08)]`, `bg-[rgba(10,10,10,0.5)]`
+- Resolve achado A3 da auditoria (links legais com hash → URLs reais)
 
 ## 6. Risco de regressão (matriz de proteção)
 
