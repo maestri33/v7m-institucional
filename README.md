@@ -24,6 +24,14 @@ npm run preview
 
 Arquivos gerados para deploy: `dist/`
 
+## CI/CD e Proxmox LXC
+
+O repositorio inclui pipeline de deploy automatico em `.github/workflows/deploy.yml`.
+
+Guia completo de infraestrutura:
+- `deploy/PRODUCTION.md`
+- `deploy/bootstrap-lxc.sh`
+
 ## Variaveis de ambiente
 
 Crie um arquivo `.env` (ou `.env.production`) quando necessario:
